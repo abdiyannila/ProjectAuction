@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Auction1" Class="OperationDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=YHAYA-PC\ANR;Initial Catalog=Auction1;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="Auction1ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.BidUser" Member="BidUsers">
+    <Type Name="BidUser">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdKTP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Nama" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Alamat" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Pekerjaan" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TanggalBid" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="BatasBid" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Harga" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="MerkId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Merek_BidUser" Member="Merek" ThisKey="MerkId" OtherKey="Id" Type="Merek" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Mobil" Member="Mobils">
+    <Type Name="Mobil">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Tahun" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Transmisi" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BBM" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NoPolisi" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MasaBerlaku" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Harga" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="MerkId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Merek_Mobil" Member="Merek" ThisKey="MerkId" OtherKey="Id" Type="Merek" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LoginUser" Member="LoginUsers">
+    <Type Name="LoginUser">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nama" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Alamat" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Pswd" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IdKTP" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Pekerjaan" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Merek" Member="Mereks">
+    <Type Name="Merek">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NamaMobil" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Merek_BidUser" Member="BidUsers" ThisKey="Id" OtherKey="MerkId" Type="BidUser" />
+      <Association Name="Merek_Mobil" Member="Mobils" ThisKey="Id" OtherKey="MerkId" Type="Mobil" />
+    </Type>
+  </Table>
+</Database>

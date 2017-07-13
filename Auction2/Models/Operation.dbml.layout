@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Operation">
+  <DataContextMoniker Name="/OperationDataContext" />
+  <nestedChildShapes>
+    <classShape Id="5818a29d-3ac6-4834-a702-0532c80f7d15" absoluteBounds="3.5, 4.25, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/OperationDataContext/BidUser" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ff10a4cf-fdae-4dc8-aefe-03f8d184f001" absoluteBounds="3.515, 4.71, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8453e754-cc92-4ca0-8013-f3b165aac0f1" absoluteBounds="3.5, 1.125, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/OperationDataContext/Mobil" />
+      <nestedChildShapes>
+        <elementListCompartment Id="407d64ee-f37e-4355-9b2d-2eeb1bc9f25e" absoluteBounds="3.515, 1.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="95271b0f-a93d-4084-936e-d2acd9316659" absoluteBounds="6.75, 0.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/OperationDataContext/LoginUser" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1a95ecb5-9c7e-47b4-a8d5-0b9ce1c950d6" absoluteBounds="6.765, 1.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3c66b81e-cfa8-4151-b145-b059656d021e" absoluteBounds="0.75, 3.375, 2, 1.1939925130208331">
+      <DataClassMoniker Name="/OperationDataContext/Merek" />
+      <nestedChildShapes>
+        <elementListCompartment Id="915298e8-b05a-4ab7-8013-f3ea4ce13b31" absoluteBounds="0.765, 3.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.75 : 4.56899251302083); (1.75 : 5.67954802604167); (3.5 : 5.67954802604167)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/OperationDataContext/Merek/Merek_BidUser" />
+      <nodes>
+        <classShapeMoniker Id="3c66b81e-cfa8-4151-b145-b059656d021e" />
+        <classShapeMoniker Id="5818a29d-3ac6-4834-a702-0532c80f7d15" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 3.375); (1.75 : 2.2499995); (3.5 : 2.2499995)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/OperationDataContext/Merek/Merek_Mobil" />
+      <nodes>
+        <classShapeMoniker Id="3c66b81e-cfa8-4151-b145-b059656d021e" />
+        <classShapeMoniker Id="8453e754-cc92-4ca0-8013-f3b165aac0f1" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

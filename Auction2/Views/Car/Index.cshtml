@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Auction2.Models.CarModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Daftar Lelang Mobil  </h2>
+<table class="table">
+    <thead class="thead-inverse">
+        <tr>
+            <th>@Html.DisplayNameFor(modelItem => modelItem.Id)</th>
+            <th>@Html.DisplayNameFor(modelItem => modelItem.MerkName)</th>
+            <th>@Html.DisplayNameFor(modelItem => modelItem.Tahun)</th>
+            <th>@Html.DisplayNameFor(modelItem => modelItem.Harga)</th>
+            <th>Modify</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                <td>@Html.DisplayFor(modelItem => item.MerkName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Tahun)</td>
+                <td>@Html.DisplayFor(modelItem => item.Harga)</td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) *@|
+                    @Html.ActionLink("Details", "Details", new { merkid = item.Id }) |
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.ActionLink("Create New item", "Create")

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Auction2.Models.BidUserModel>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<h2>Details</h2>
+
+<table class="table">
+    <thead class="thead-inverse">
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.Id)</th>
+            <th>@Html.DisplayNameFor(m => m.Nama)</th>
+            <th>@Html.DisplayNameFor(m => m.Harga)</th>
+            <th>@Html.DisplayNameFor(m => m.TanggalBid)</th>
+            <th>@Html.DisplayNameFor(m => m.BatasBid)</th>
+            <th>@*@Html.DisplayNameFor(m => m.MerkName)*@</th>
+            <th>Modify</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(m => item.Id)</td>
+                <td>@Html.DisplayFor(m => item.Nama)</td>
+                <td>@Html.DisplayFor(m => item.Harga)</td>
+                <td>
+                    <span class="hidden-xs">@item.TanggalBid.ToString("MM/dd/yyyy")</span>
+                    <span class="hidden-sm hidden-md hidden-lg">@item.BatasBid.ToString("MM/dd/yyyy")</span>
+                </td>
+                <td>
+                    <span class="hidden-xs">@item.BatasBid.ToString("MM/dd/yyyy")</span>
+                    <span class="hidden-sm hidden-md hidden-lg">@item.BatasBid.ToString("MM/dd/yyyy")</span>
+                </td>
+                <td>@Html.DisplayFor(m => item.MerkName)</td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.ActionLink("Create New Bid", "Create")
+<br />
+@Html.ActionLink("Back To List Item", "Index")
+
+
+<td>
+    @*<span class="hidden-xs">@entry.Date.ToString("MM/dd/yyyy")</span>
+    <span class="hidden-sm hidden-md hidden-lg">@entry.Date.ToString("MM/dd")</span>*@
+</td>
