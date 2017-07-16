@@ -42,6 +42,9 @@ namespace Auction2.Models
     partial void InsertMerek(Merek instance);
     partial void UpdateMerek(Merek instance);
     partial void DeleteMerek(Merek instance);
+    partial void InsertListBidUser(ListBidUser instance);
+    partial void UpdateListBidUser(ListBidUser instance);
+    partial void DeleteListBidUser(ListBidUser instance);
     #endregion
 		
 		public OperationDataContext() : 
@@ -103,6 +106,14 @@ namespace Auction2.Models
 			get
 			{
 				return this.GetTable<Merek>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ListBidUser> ListBidUsers
+		{
+			get
+			{
+				return this.GetTable<ListBidUser>();
 			}
 		}
 	}
@@ -893,6 +904,8 @@ namespace Auction2.Models
 		
 		private EntitySet<Mobil> _Mobils;
 		
+		private EntitySet<ListBidUser> _ListBidUsers;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -907,6 +920,7 @@ namespace Auction2.Models
 		{
 			this._BidUsers = new EntitySet<BidUser>(new Action<BidUser>(this.attach_BidUsers), new Action<BidUser>(this.detach_BidUsers));
 			this._Mobils = new EntitySet<Mobil>(new Action<Mobil>(this.attach_Mobils), new Action<Mobil>(this.detach_Mobils));
+			this._ListBidUsers = new EntitySet<ListBidUser>(new Action<ListBidUser>(this.attach_ListBidUsers), new Action<ListBidUser>(this.detach_ListBidUsers));
 			OnCreated();
 		}
 		
@@ -976,6 +990,19 @@ namespace Auction2.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Merek_ListBidUser", Storage="_ListBidUsers", ThisKey="Id", OtherKey="MerkId")]
+		public EntitySet<ListBidUser> ListBidUsers
+		{
+			get
+			{
+				return this._ListBidUsers;
+			}
+			set
+			{
+				this._ListBidUsers.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1018,6 +1045,313 @@ namespace Auction2.Models
 		{
 			this.SendPropertyChanging();
 			entity.Merek = null;
+		}
+		
+		private void attach_ListBidUsers(ListBidUser entity)
+		{
+			this.SendPropertyChanging();
+			entity.Merek = this;
+		}
+		
+		private void detach_ListBidUsers(ListBidUser entity)
+		{
+			this.SendPropertyChanging();
+			entity.Merek = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ListBidUser")]
+	public partial class ListBidUser : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _IdKTP;
+		
+		private string _Nama;
+		
+		private string _Alamat;
+		
+		private string _Pekerjaan;
+		
+		private System.DateTime _TanggalBid;
+		
+		private System.DateTime _BatasBid;
+		
+		private decimal _Harga;
+		
+		private int _MerkId;
+		
+		private EntityRef<Merek> _Merek;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnIdKTPChanging(System.Nullable<int> value);
+    partial void OnIdKTPChanged();
+    partial void OnNamaChanging(string value);
+    partial void OnNamaChanged();
+    partial void OnAlamatChanging(string value);
+    partial void OnAlamatChanged();
+    partial void OnPekerjaanChanging(string value);
+    partial void OnPekerjaanChanged();
+    partial void OnTanggalBidChanging(System.DateTime value);
+    partial void OnTanggalBidChanged();
+    partial void OnBatasBidChanging(System.DateTime value);
+    partial void OnBatasBidChanged();
+    partial void OnHargaChanging(decimal value);
+    partial void OnHargaChanged();
+    partial void OnMerkIdChanging(int value);
+    partial void OnMerkIdChanged();
+    #endregion
+		
+		public ListBidUser()
+		{
+			this._Merek = default(EntityRef<Merek>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdKTP", DbType="Int")]
+		public System.Nullable<int> IdKTP
+		{
+			get
+			{
+				return this._IdKTP;
+			}
+			set
+			{
+				if ((this._IdKTP != value))
+				{
+					this.OnIdKTPChanging(value);
+					this.SendPropertyChanging();
+					this._IdKTP = value;
+					this.SendPropertyChanged("IdKTP");
+					this.OnIdKTPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nama", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Nama
+		{
+			get
+			{
+				return this._Nama;
+			}
+			set
+			{
+				if ((this._Nama != value))
+				{
+					this.OnNamaChanging(value);
+					this.SendPropertyChanging();
+					this._Nama = value;
+					this.SendPropertyChanged("Nama");
+					this.OnNamaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Alamat", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Alamat
+		{
+			get
+			{
+				return this._Alamat;
+			}
+			set
+			{
+				if ((this._Alamat != value))
+				{
+					this.OnAlamatChanging(value);
+					this.SendPropertyChanging();
+					this._Alamat = value;
+					this.SendPropertyChanged("Alamat");
+					this.OnAlamatChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pekerjaan", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Pekerjaan
+		{
+			get
+			{
+				return this._Pekerjaan;
+			}
+			set
+			{
+				if ((this._Pekerjaan != value))
+				{
+					this.OnPekerjaanChanging(value);
+					this.SendPropertyChanging();
+					this._Pekerjaan = value;
+					this.SendPropertyChanged("Pekerjaan");
+					this.OnPekerjaanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TanggalBid", DbType="Date NOT NULL")]
+		public System.DateTime TanggalBid
+		{
+			get
+			{
+				return this._TanggalBid;
+			}
+			set
+			{
+				if ((this._TanggalBid != value))
+				{
+					this.OnTanggalBidChanging(value);
+					this.SendPropertyChanging();
+					this._TanggalBid = value;
+					this.SendPropertyChanged("TanggalBid");
+					this.OnTanggalBidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BatasBid", DbType="Date NOT NULL")]
+		public System.DateTime BatasBid
+		{
+			get
+			{
+				return this._BatasBid;
+			}
+			set
+			{
+				if ((this._BatasBid != value))
+				{
+					this.OnBatasBidChanging(value);
+					this.SendPropertyChanging();
+					this._BatasBid = value;
+					this.SendPropertyChanged("BatasBid");
+					this.OnBatasBidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Harga", DbType="Money NOT NULL")]
+		public decimal Harga
+		{
+			get
+			{
+				return this._Harga;
+			}
+			set
+			{
+				if ((this._Harga != value))
+				{
+					this.OnHargaChanging(value);
+					this.SendPropertyChanging();
+					this._Harga = value;
+					this.SendPropertyChanged("Harga");
+					this.OnHargaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MerkId", DbType="Int NOT NULL")]
+		public int MerkId
+		{
+			get
+			{
+				return this._MerkId;
+			}
+			set
+			{
+				if ((this._MerkId != value))
+				{
+					if (this._Merek.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMerkIdChanging(value);
+					this.SendPropertyChanging();
+					this._MerkId = value;
+					this.SendPropertyChanged("MerkId");
+					this.OnMerkIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Merek_ListBidUser", Storage="_Merek", ThisKey="MerkId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Merek Merek
+		{
+			get
+			{
+				return this._Merek.Entity;
+			}
+			set
+			{
+				Merek previousValue = this._Merek.Entity;
+				if (((previousValue != value) 
+							|| (this._Merek.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Merek.Entity = null;
+						previousValue.ListBidUsers.Remove(this);
+					}
+					this._Merek.Entity = value;
+					if ((value != null))
+					{
+						value.ListBidUsers.Add(this);
+						this._MerkId = value.Id;
+					}
+					else
+					{
+						this._MerkId = default(int);
+					}
+					this.SendPropertyChanged("Merek");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

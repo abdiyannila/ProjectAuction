@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Auction2.Models.LoginUser
+@{
     ViewBag.Title = "Contact";
 }
 <h2>@ViewBag.Title.</h2>
@@ -15,3 +16,11 @@
     <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
     <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
 </address>
+
+@using (Html.BeginForm())
+{
+    @Html.ActionLink("Daftar List Bid", "ForBidUser", new { nama = @Session["Nama"].ToString() })
+    <br />
+    @Html.ActionLink("Edit Profil", "Contact", "Home")
+    @*@Html.TextBox("SearchString")*@
+}

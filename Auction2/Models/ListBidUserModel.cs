@@ -7,27 +7,26 @@ using System.Web.Mvc;
 
 namespace Auction2.Models
 {
-    public class CarModel
+    public class ListBidUserModel
     {
         [DisplayName("No")]
         public int Id { get; set; }
-        public string Tahun { get; set; }
-        public string Transmisi { get; set; }
-        public string BBM { get; set; }
-
-        [DisplayName("Plat Nomor")]
-        public string NoPolisi { get; set; }
-        public DateTime MasaBerlaku { get; set; }
+        public int? IdKTP { get; set; }   
+        public string Nama { get; set; }
+        public string Alamat { get; set; }
+        public string Pekerjaan { get; set; }
+        public DateTime TanggalBid { get; set; }
+        public DateTime BatasBid { get; set; }
         public decimal Harga { get; set; }
-        public int MerkId { get; set; }
 
         [DisplayName("Merk Mobil")]
+        public int MerkId { get; set; }
         public string MerkName { get; set; }
 
         //nambahin dropdown merk mobil
         public IEnumerable<SelectListItem> Merks { get; set; }
 
-        public CarModel()
+        public ListBidUserModel()
         {
             Merks = new List<SelectListItem>();
         }

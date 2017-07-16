@@ -1,0 +1,18 @@
+﻿@model Auction2.Models.CarModel
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+Are you sure for delete this?
+@using (Html.BeginForm())
+{
+    @Html.DisplayNameFor(m => Model.Id) 
+    @Html.DisplayFor(m=>Model.MerkId)
+    @Html.DisplayFor(m => Model.MerkName)
+    <br />
+
+    <input type="submit" value="Delete"/>
+}
+

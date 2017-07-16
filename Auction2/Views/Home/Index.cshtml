@@ -1,14 +1,15 @@
-﻿@{
+﻿@model Auction2.Models.LoginUser
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+@*<div class="jumbotron">
     <h1>ASP.NET</h1>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
     <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+</div>*@
 
-<div class="row">
+@*<div class="row">
     <div class="col-md-4">
         <h2>Getting started</h2>
         <p>
@@ -28,4 +29,51 @@
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
-</div>
+</div>*@
+
+@using (Html.BeginForm())
+{
+    <br />
+    <fieldset>
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @if (@ViewBag.Message != null)
+        {
+            <div style="border: 1px solid red">
+                @ViewBag.Message
+            </div>
+        }
+        <table>
+            <tr>
+                <td>@Html.LabelFor(a => a.Nama)</td>
+                <td>@Html.TextBoxFor(a => a.Nama)</td>
+                <td>@Html.ValidationMessageFor(a => a.Nama)</td>
+            </tr>
+            <tr>
+                <td><br /></td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(a => a.Pswd) </td>
+                <td>@Html.PasswordFor(a => a.Pswd)</td>
+                <td>@Html.ValidationMessageFor(a => a.Pswd)</td>
+            </tr>
+            <tr>
+                <td><br /></td>
+            </tr>
+        </table>
+    </fieldset>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pad-top">
+                    <button type="submit" style="height:38px; width:100px" class="btn btn-success btn-lg margin-right " value="Create">
+                        <span class="glyphicon glyphicon-save"></span> Save
+                    </button>
+                    <a href="" class="btn btn-warning btn-lg" style="height:38px">
+                        <span class="glyphicon glyphicon-remove"></span> Cencel
+                    </a>
+                </div>
+            </div>
+        </div>
+        @Html.ActionLink("Create New Member", "Register")
+}

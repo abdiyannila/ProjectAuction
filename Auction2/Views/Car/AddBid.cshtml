@@ -1,0 +1,66 @@
+﻿@model Auction2.Models.BidUserModel
+@using Auction2.Models
+
+@{
+    ViewBag.Title = "AddBid";
+}
+
+<h2>Add Bid</h2>
+@using (Html.BeginForm())
+{
+    @Html.DisplayNameFor(m=>m.Nama)
+    <div>
+        @Html.Label(@Session["Nama"].ToString())
+        @*@Session["Nama"].ToString()*@
+        @*@Html.TextBoxFor(m=>m.Nama)*@
+    </div>
+
+    @Html.DisplayNameFor(m=>m.IdKTP)
+    <div>
+        @Html.Label(@Session["IdKTP"].ToString())
+        @*@Session["IdKTP"].ToString()*@
+        @*@Html.TextBoxFor(m=>m.IdKTP)*@
+    </div>
+
+    @Html.DisplayNameFor(m=>m.Alamat)
+    <div>
+        @Html.Label(@Session["Alamat"].ToString())
+        @*@Session["Alamat"].ToString()*@
+        @*@Html.TextBoxFor(m=>m.Alamat)*@
+    </div>
+
+    @Html.DisplayNameFor(m => m.Pekerjaan)
+    <div>
+        @Html.Label(@Session["Pekerjaan"].ToString())
+        @*@Session["Pekerjaan"].ToString()*@
+        @*@Html.TextBoxFor(m => m.Pekerjaan)*@
+    </div>
+
+    @Html.DisplayNameFor(m => m.TanggalBid)
+    <div>
+        @Html.TextBoxFor(m => m.TanggalBid, "{0:d}", new { @class = "form-control datepicker" })
+    </div>
+
+    @Html.DisplayNameFor(m => m.BatasBid)
+    <div>
+        @Html.DisplayFor(m => m.BatasBid, "{0:d}", new { @class = "form-control datepicker" })
+    </div>
+    
+    @Html.DisplayNameFor(m => m.Harga)
+    <div>
+        @Html.TextBoxFor(m => m.Harga)
+    </div>
+
+    @Html.DisplayNameFor(m => m.MerkId)
+    <div>
+        @*Session["MerkName"] = bid.MerkName.ToString();*@
+        @Html.DropDownListFor(m => Model.MerkId, Model.Merks)
+    </div>
+
+    <div>
+        <br />
+        <input type="submit" value="Add Bid" />
+    </div>
+}
+
+@*@Html.TextBoxFor(m => m.MasaBerlaku, "{0:d}", new { @class = "form-control datepicker" })*@

@@ -26,18 +26,31 @@
         <elementListCompartment Id="915298e8-b05a-4ab7-8013-f3ea4ce13b31" absoluteBounds="0.765, 3.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(1.75 : 4.56899251302083); (1.75 : 5.67954802604167); (3.5 : 5.67954802604167)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.75 : 4.56899251302083); (1.75 : 5.67954802604167); (3.5 : 5.67954802604167)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/OperationDataContext/Merek/Merek_BidUser" />
       <nodes>
         <classShapeMoniker Id="3c66b81e-cfa8-4151-b145-b059656d021e" />
         <classShapeMoniker Id="5818a29d-3ac6-4834-a702-0532c80f7d15" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 3.375); (1.75 : 2.2499995); (3.5 : 2.2499995)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 3.86140055338542); (4.5 : 3.86140055338542); (4.5 : 3.47280110677083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/OperationDataContext/Merek/Merek_Mobil" />
       <nodes>
         <classShapeMoniker Id="3c66b81e-cfa8-4151-b145-b059656d021e" />
         <classShapeMoniker Id="8453e754-cc92-4ca0-8013-f3b165aac0f1" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="9d9f4ca7-f08d-4bac-b013-5fc070085911" absoluteBounds="0.5, 0.5, 2, 2.5401025390625">
+      <DataClassMoniker Name="/OperationDataContext/ListBidUser" />
+      <nestedChildShapes>
+        <elementListCompartment Id="76de42c1-0a36-4e2f-8ae4-353bd4eb58a9" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.625 : 3.375); (1.625 : 3.0401025390625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/OperationDataContext/Merek/Merek_ListBidUser" />
+      <nodes>
+        <classShapeMoniker Id="3c66b81e-cfa8-4151-b145-b059656d021e" />
+        <classShapeMoniker Id="9d9f4ca7-f08d-4bac-b013-5fc070085911" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

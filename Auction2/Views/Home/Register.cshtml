@@ -1,0 +1,46 @@
+﻿@model Auction2.Models.LoginUserModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.DisplayNameFor(m => m.IdKTP)
+    <div>
+        @Html.TextBoxFor(m => m.IdKTP)
+    </div>
+
+    @Html.DisplayNameFor(m => m.Nama)
+    <div>
+        @Html.TextBoxFor(m => m.Nama)
+    </div>
+
+    @Html.DisplayNameFor(m => m.Alamat)
+    <div>
+        @Html.TextBoxFor(m => m.Alamat)
+    </div>
+
+    @Html.DisplayNameFor(m => m.Email)
+    <div>
+        @Html.TextBoxFor(m => m.Email)
+    </div>
+
+    @Html.DisplayNameFor(m => m.Pekerjaan)
+    <div>
+        @Html.TextBoxFor(m => m.Pekerjaan)
+    </div>
+
+    @Html.DisplayNameFor(m => m.Password)
+    <div>
+        @Html.TextBoxFor(m => m.Password)
+    </div>
+
+    <div>
+        <br />
+        <input type="submit" value="Create" />
+    </div>
+}
+

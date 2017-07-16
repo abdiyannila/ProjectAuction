@@ -1,0 +1,41 @@
+﻿@model Auction2.Models.CarModel
+@using Auction2.Models
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+@using (Html.BeginForm())
+{
+    @Html.DisplayNameFor(m => m.MerkName)
+    <div>
+        @Html.DropDownListFor(m => Model.MerkId, Model.Merks)
+    </div>
+
+    @Html.DisplayNameFor(m => m.Tahun)
+    <div>
+        @Html.TextBoxFor(m => m.Tahun)
+    </div>
+
+    @Html.DisplayNameFor(m=>m.Transmisi)
+    <div>
+        @Html.TextBoxFor(m=>m.Transmisi)
+    </div>
+
+    @Html.DisplayNameFor(m=>m.BBM)
+    <div>@Html.TextBoxFor(m=>m.BBM)</div>
+
+    @Html.DisplayNameFor(m=>m.NoPolisi)
+    <div>@Html.TextBoxFor(m=>m.NoPolisi)</div>
+
+    @Html.DisplayNameFor(m=>m.MasaBerlaku)
+    <div>@Html.TextBoxFor(m=>m.MasaBerlaku)</div>
+
+    @Html.DisplayNameFor(m=>m.Harga)
+    <div>@Html.TextBoxFor(m => m.Harga)</div>
+
+    <div>
+        <br />
+        <input type="submit" value="Edit" />
+    </div>
+}

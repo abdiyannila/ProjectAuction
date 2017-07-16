@@ -1,7 +1,61 @@
-﻿@{
+﻿@model IEnumerable<Auction2.Models.BidUserModel>
+
+@using Auction2.Models
+@{
     ViewBag.Title = "About";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
 <p>Use this area to provide additional information.</p>
+
+@*<h2>Daftar Bid @Session["Nama"].ToString()</h2>*@
+
+
+@using (Html.BeginForm())
+{
+   
+    <table>
+        @Html.DisplayNameFor(m => m.Nama)
+        @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+       
+    </table>
+
+   <table class="table">
+       <thead class="thead-inverse">
+           <tr>
+               <th>@Html.DisplayNameFor(m => m.Id)</th>
+               <th>@Html.DisplayNameFor(m=>m.Nama)</th>
+               <th>@Html.DisplayNameFor(m=>m.MerkName)</th>
+               <th>@Html.DisplayNameFor(m=>m.Harga)</th>
+               <th>@Html.DisplayNameFor(m=>m.TanggalBid)</th>
+               <th>@Html.DisplayNameFor(m=>m.BatasBid)</th>
+               <th>Keterangan</th>
+           </tr>
+       </thead>
+       <tbody>
+           @foreach(var item in Model)
+           {
+                <tr>
+                    <td>@Html.DisplayFor(m=>item.Id)</td>
+                    <td>@Html.DisplayFor(m=>item.Nama)</td>
+                    <td>@Html.DisplayFor(m=>item.MerkName)</td>
+                    <td>Rp @Html.DisplayFor(m=>item.Harga)</td>
+                    <td>
+                        <span class="hidden-xs">@item.TanggalBid.ToString("MM/dd/yyyy")</span>
+                        <span class="hidden-sm hidden-md hidden-lg">@item.TanggalBid.ToString("MM/dd/yyyy")</span>
+                    </td>
+                    <td>
+                        <span class="hidden-xs">@item.BatasBid.ToString("MM/dd/yyyy")</span>
+                        <span class="hidden-sm hidden-md hidden-lg">@item.BatasBid.ToString("MM/dd/yyyy")</span>
+                    </td>
+                    <td>
+                        @Html.ActionLink("Modify", "Index", "Car")
+                    </td>
+                </tr>
+           }
+       </tbody>
+   </table>
+}
+@Html.ActionLink("Create New Bid", "Index", "Car")

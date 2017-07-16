@@ -145,16 +145,20 @@
     <Compile Include="Controllers\BidController.cs" />
     <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Data\BidUserRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BidUserModel.cs" />
     <Compile Include="Models\CarModel.cs" />
+    <Compile Include="Models\ListBidUserModel.cs" />
+    <Compile Include="Models\LoginUserModel.cs" />
     <Compile Include="Models\Operation.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Operation.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewUserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +212,12 @@
     <Content Include="Views\Car\Create.cshtml" />
     <Content Include="Views\Car\Details.cshtml" />
     <Content Include="Views\Bid\Index.cshtml" />
+    <Content Include="Views\Car\AddBid.cshtml" />
+    <Content Include="Views\Car\Delete.cshtml" />
+    <Content Include="Views\Car\Edit.cshtml" />
+    <Content Include="Views\Car\DisplayBidUser.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\ForBidUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

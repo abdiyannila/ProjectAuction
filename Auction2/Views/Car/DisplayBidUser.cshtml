@@ -1,0 +1,16 @@
+﻿@model IEnumerable < Auction2.Models.BidUserModel>
+@{
+    ViewBag.Title = "DisplayBidUser";
+}
+
+<h2>DisplayBidUser</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+    
+    @Html.DisplayNameFor(m=>m.Nama)
+    @foreach (var item in Model)
+    {
+        @Html.TextBoxFor(m=>item.Nama)
+    }

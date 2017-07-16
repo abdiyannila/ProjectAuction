@@ -1,11 +1,14 @@
 ﻿@model IEnumerable<Auction2.Models.BidUserModel>
+@using Auction2.Models
 
 @{
     ViewBag.Title = "Details";
 }
-
+<h3>The Winner is @ViewBag.Winner</h3>
 
 <h2>Details</h2>
+@*@Html.LabelFor(m=>Model.)
+@Html.LabelFor(m => m.MerkId)*@
 
 <table class="table">
     <thead class="thead-inverse">
@@ -15,13 +18,10 @@
             <th>@Html.DisplayNameFor(m => m.Harga)</th>
             <th>@Html.DisplayNameFor(m => m.TanggalBid)</th>
             <th>@Html.DisplayNameFor(m => m.BatasBid)</th>
-            <th>@*@Html.DisplayNameFor(m => m.MerkName)*@</th>
-            <th>Modify</th>
+            <th>Keterangan</th>
         </tr>
     </thead>
     <tbody>
-        
-
         @foreach (var item in Model)
         {
             <tr>
@@ -29,30 +29,25 @@
                 <td>@Html.DisplayFor(m => item.Nama)</td>
                 <td>@Html.DisplayFor(m => item.Harga)</td>
                 <td>
-                    <span class="hidden-xs">@item.TanggalBid.ToString("MM/dd/yyyy")</span>
-                    <span class="hidden-sm hidden-md hidden-lg">@item.BatasBid.ToString("MM/dd/yyyy")</span>
+                    <span class="hidden-xs">@item.TanggalBid.ToString("dd/MM/yyyy")</span>
+                    <span class="hidden-sm hidden-md hidden-lg">@item.BatasBid.ToString("dd/MM/yyyy")</span>
                 </td>
                 <td>
                     <span class="hidden-xs">@item.BatasBid.ToString("MM/dd/yyyy")</span>
                     <span class="hidden-sm hidden-md hidden-lg">@item.BatasBid.ToString("MM/dd/yyyy")</span>
                 </td>
-                <td>@Html.DisplayFor(m => item.MerkName)</td>
                 <td>
-                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                    
+                    @Html.ActionLink("Edit", "EditBid", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "DeleteBid", new { id = item.Id })
                 </td>
             </tr>
         }
     </tbody>
 </table>
-
-@Html.ActionLink("Create New Bid", "Create")
 <br />
-@Html.ActionLink("Back To List Item", "Index")
+@Html.ActionLink("Back To List Item Lelang", "Index")
 
 
-<td>
-    @*<span class="hidden-xs">@entry.Date.ToString("MM/dd/yyyy")</span>
-    <span class="hidden-sm hidden-md hidden-lg">@entry.Date.ToString("MM/dd")</span>*@
-</td>
+@*@Html.ActionLink("Create New Bid", "AddBid",new { id=Model.me})*@
+
