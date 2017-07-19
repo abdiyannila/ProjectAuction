@@ -2,7 +2,31 @@
 @{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
+
+
+@using (Html.BeginForm())
+{
+    <br />
+    <br />
+    <br />
+    <div class="row">
+        <div class="list-group col-lg-6 col-md-6">
+            <a href="@Url.Action("About", "Home")" class="list-group-item active">Edit Profil</a>
+            <a href="@Url.Action("ForBidUser", "Home", new { nama = @Session["Nama"].ToString() })" class="list-group-item">Daftar List Bid</a>
+            <a href="#" class="list-group-item active">Setting Data User</a>
+        </div>
+        <div class="list-group col-lg-6 col-md-6">
+        </div>
+    </div>
+
+    @*@Html.ActionLink("Daftar List Bid", "ForBidUser", new { nama = @Session["Nama"].ToString() })*@
+    <br />
+    @Html.ActionLink("Back To List Bid", "Index", "Car")
+    @*@Html.TextBox("SearchString")*@
+}
+
+
+@*<h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
 <address>
@@ -15,12 +39,4 @@
 <address>
     <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
     <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
-
-@using (Html.BeginForm())
-{
-    @Html.ActionLink("Daftar List Bid", "ForBidUser", new { nama = @Session["Nama"].ToString() })
-    <br />
-    @Html.ActionLink("Edit Profil", "Contact", "Home")
-    @*@Html.TextBox("SearchString")*@
-}
+</address>*@

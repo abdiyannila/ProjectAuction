@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
@@ -12,6 +13,8 @@ namespace Auction2.Models
         public string Alamat { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
+
+        [DisplayName("No KTP")]
         public int IdKTP { get; set; }
         public string Pekerjaan { get; set; }
     }

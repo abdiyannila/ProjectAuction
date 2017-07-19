@@ -16,7 +16,11 @@ namespace Auction2.Models
         public string Nama { get; set; }
         public string Alamat { get; set; }
         public string Pekerjaan { get; set; }
+
+        [DisplayName("Tanggal Bid")]
         public DateTime TanggalBid { get; set; }
+
+        [DisplayName("Batas Bid")]
         public DateTime BatasBid { get; set; }
         public decimal Harga { get; set; }
 

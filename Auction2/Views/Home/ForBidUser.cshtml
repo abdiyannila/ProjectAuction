@@ -4,45 +4,46 @@
     ViewBag.Title = "ForBidUser";
 }
 
-<h2>ForBidUser</h2>
+<h2>Bid User</h2>
 
 @using (Html.BeginForm())
 {
-
-    <table class="table">
-        <thead class="thead-inverse">
-            <tr>
-                <th>@Html.DisplayNameFor(m => m.Id)</th>
-                <th>@Html.DisplayNameFor(m => m.Nama)</th>
-                <th>@Html.DisplayNameFor(m => m.MerkName)</th>
-                <th>@Html.DisplayNameFor(m => m.Harga)</th>
-                <th>@Html.DisplayNameFor(m => m.TanggalBid)</th>
-                <th>@Html.DisplayNameFor(m => m.BatasBid)</th>
-                <th>Keterangan</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+    <div class="col-lg-12 col-md-12 list-group-item" >
+        <table class="table table table-striped table-hover">
+            <thead class="thead-inverse">
                 <tr>
-                    <td>@Html.DisplayFor(m => item.Id)</td>
-                    <td>@Html.DisplayFor(m => item.Nama)</td>
-                    <td>@Html.DisplayFor(m => item.MerkName)</td>
-                    <td>Rp @Html.DisplayFor(m => item.Harga)</td>
-                    <td>
-                        <span class="hidden-xs">@item.TanggalBid.ToString("MM/dd/yyyy")</span>
-                        <span class="hidden-sm hidden-md hidden-lg">@item.TanggalBid.ToString("MM/dd/yyyy")</span>
-                    </td>
-                    <td>
-                        <span class="hidden-xs">@item.BatasBid.ToString("MM/dd/yyyy")</span>
-                        <span class="hidden-sm hidden-md hidden-lg">@item.BatasBid.ToString("MM/dd/yyyy")</span>
-                    </td>
-                    <td>
-                        @Html.ActionLink("Modify", "Index", "Car")
-                    </td>
+                    @* <th>@Html.DisplayNameFor(m => m.Id)</th>*@
+                    <th>@Html.DisplayNameFor(m => m.Nama)</th>
+                    <th>@Html.DisplayNameFor(m => m.MerkName)</th>
+                    <th>@Html.DisplayNameFor(m => m.Harga)</th>
+                    <th>@Html.DisplayNameFor(m => m.TanggalBid)</th>
+                    <th>@Html.DisplayNameFor(m => m.BatasBid)</th>
+                    <th>Keterangan</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @*<td>@Html.DisplayFor(m => item.Id)</td>*@
+                        <td>@Html.DisplayFor(m => item.Nama)</td>
+                        <td>@Html.DisplayFor(m => item.MerkName)</td>
+                        <td>Rp @Html.DisplayFor(m => item.Harga)</td>
+                        <td>
+                            <span class="hidden-xs">@item.TanggalBid.ToString("MM/dd/yyyy")</span>
+                            <span class="hidden-sm hidden-md hidden-lg">@item.TanggalBid.ToString("MM/dd/yyyy")</span>
+                        </td>
+                        <td>
+                            <span class="hidden-xs">@item.BatasBid.ToString("MM/dd/yyyy")</span>
+                            <span class="hidden-sm hidden-md hidden-lg">@item.BatasBid.ToString("MM/dd/yyyy")</span>
+                        </td>
+                        <td>
+                            @Html.ActionLink("Modify", "Index", "Car")
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 }
-@Html.ActionLink("Back To List Akun", "Contact")
+@Html.ActionLink("Back To List Account", "Contact")

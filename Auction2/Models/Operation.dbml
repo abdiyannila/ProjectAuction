@@ -38,15 +38,6 @@
       <Column Name="Pekerjaan" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.Merek" Member="Mereks">
-    <Type Name="Merek">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="NamaMobil" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Merek_BidUser" Member="BidUsers" ThisKey="Id" OtherKey="MerkId" Type="BidUser" />
-      <Association Name="Merek_Mobil" Member="Mobils" ThisKey="Id" OtherKey="MerkId" Type="Mobil" />
-      <Association Name="Merek_ListBidUser" Member="ListBidUsers" ThisKey="Id" OtherKey="MerkId" Type="ListBidUser" />
-    </Type>
-  </Table>
   <Table Name="dbo.ListBidUser" Member="ListBidUsers">
     <Type Name="ListBidUser">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -59,6 +50,16 @@
       <Column Name="Harga" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
       <Column Name="MerkId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Merek_ListBidUser" Member="Merek" ThisKey="MerkId" OtherKey="Id" Type="Merek" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Merek" Member="Mereks">
+    <Type Name="Merek">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NamaMobil" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Images" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Merek_BidUser" Member="BidUsers" ThisKey="Id" OtherKey="MerkId" Type="BidUser" />
+      <Association Name="Merek_Mobil" Member="Mobils" ThisKey="Id" OtherKey="MerkId" Type="Mobil" />
+      <Association Name="Merek_ListBidUser" Member="ListBidUsers" ThisKey="Id" OtherKey="MerkId" Type="ListBidUser" />
     </Type>
   </Table>
 </Database>

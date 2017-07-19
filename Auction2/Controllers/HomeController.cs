@@ -27,7 +27,6 @@ namespace Auction2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(LoginUser loginuser)
         {
-
             if (ModelState.IsValid)
             {
                 var queres = from a_login in context.LoginUsers select a_login;
@@ -43,6 +42,20 @@ namespace Auction2.Controllers
                 }
             }
             return View(loginuser);
+
+            //List<LoginUserModel> login = new List<LoginUserModel>();
+            //var DataLogin = (from a_login in context.LoginUsers
+            //                 select new LoginUserModel
+            //                 {
+            //                     Id= a_login.Id,
+            //                     Nama= a_login.Nama,
+            //                     Alamat= a_login.Alamat,
+            //                     Password= a_login.Pswd,
+            //                     Email= a_login.Pswd,
+            //                     IdKTP= a_login.IdKTP,
+            //                     Pekerjaan= a_login.Pekerjaan
+            //                 });
+            //login = DataLogin.ToList(); 
         }
 
         public ActionResult Register()

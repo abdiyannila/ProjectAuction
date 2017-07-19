@@ -64,4 +64,3 @@ D:\MI\VB C#\Auction2\Auction2\bin\Microsoft.AI.WindowsServer.xml
 D:\MI\VB C#\Auction2\Auction2\bin\Microsoft.AI.Web.xml
 D:\MI\VB C#\Auction2\Auction2\obj\Debug\Auction2.dll
 D:\MI\VB C#\Auction2\Auction2\obj\Debug\Auction2.pdb
-D:\MI\VB C#\Auction2\Auction2\obj\Debug\Auction2.csprojResolveAssemblyReference.cache

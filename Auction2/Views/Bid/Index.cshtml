@@ -2,41 +2,112 @@
 @{
     ViewBag.Title = "Index";
 }
+<link href="~/Content/styles.css" rel="stylesheet" type="text/css" />
+@*<h2>Index</h2>*@
 
-<h2>Index</h2>
-
-<table class="table">
-<thead class="thead-inverse">
-    <tr>
-        <th>@Html.DisplayNameFor(m => m.Id)</th>
-        <th>@Html.DisplayNameFor(m => m.Nama)</th>
-        <th>@Html.DisplayNameFor(m => m.Harga)</th>
-        <th>@Html.DisplayNameFor(m => m.TanggalBid)</th>
-        <th>@Html.DisplayNameFor(m => m.BatasBid)</th>
-        <th>@Html.DisplayNameFor(m => m.MerkName)</th>
-        <th>Modify</th>
-    </tr>
-</thead>
-<tbody>
-    @foreach (var item in Model)
-    {
+@*<table class="table">
+    <thead class="thead-inverse">
         <tr>
-            <td>@Html.DisplayFor(m => item.Id)</td>
-            <td>@Html.DisplayFor(m => item.Nama)</td>
-            <td>@Html.DisplayFor(m => item.Harga)</td>
-            <td>@Html.DisplayFor(m => item.TanggalBid)</td>
-            <td>@Html.DisplayFor(m => item.BatasBid)</td>
-            <td>@Html.DisplayFor(m => item.MerkName)</td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
+            <th>@Html.DisplayNameFor(m => m.Id)</th>
+            <th>@Html.DisplayNameFor(m => m.Nama)</th>
+            <th>@Html.DisplayNameFor(m => m.Harga)</th>
+            <th>@Html.DisplayNameFor(m => m.TanggalBid)</th>
+            <th>@Html.DisplayNameFor(m => m.BatasBid)</th>
+            <th>@Html.DisplayNameFor(m => m.MerkName)</th>
+            <th>Modify</th>
         </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(m => item.Id)</td>
+                <td>@Html.DisplayFor(m => item.Nama)</td>
+                <td>@Html.DisplayFor(m => item.Harga)</td>
+                <td>@Html.DisplayFor(m => item.TanggalBid)</td>
+                <td>@Html.DisplayFor(m => item.BatasBid)</td>
+                <td>@Html.DisplayFor(m => item.MerkName)</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
 
-    }
-</tbody>
-</table>
+        }
+    </tbody>
+    </table>*@
+@*<div id="getting-started">Coba</div>
+<script type="text/javascript">
+        $("#getting-started")
+            .countdown("2017/01/01", function (event) {
+                $(this).text(
+                    event.strftime('%D days %H:%M:%S')
+                );
+            });
+</script>*@
 
-@Html.ActionLink("Create New Bid", "Create")
+@*<div class="timer-area">
 
+    <h1>
+        C# Corner MVP Summit 2013 is Coming
+        and you won't want to miss it..
+    </h1>
+
+    <ul id="countdown">
+        <li>
+            <span class="days">00</span>
+            <p class="timeRefDays">days</p>
+        </li>
+        <li>
+            <span class="hours">00</span>
+            <p class="timeRefHours">hours</p>
+        </li>
+        <li>
+            <span class="minutes">00</span>
+            <p class="timeRefMinutes">minutes</p>
+        </li>
+        <li>
+            <span class="seconds">00</span>
+            <p class="timeRefSeconds">seconds</p>
+        </li>
+    </ul>
+</div>*@
+
+
+@*@Html.ActionLink("Create New Bid", "Create")*@
+
+
+<!-- Display the countdown timer in an element -->
+<h3><p id="demo"></p></h3>
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Jan 5, 2018 15:37:25").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get todays date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now an the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>

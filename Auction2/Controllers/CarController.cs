@@ -17,7 +17,6 @@ namespace Auction2.Controllers
         }
 
         //=====================Untuk bagian Car rModel============================
-        // GET: Car
         public ActionResult Index()
         {
             //masukkan ke list di CS Model
@@ -27,14 +26,15 @@ namespace Auction2.Controllers
                          on a_car.MerkId equals a_merk.Id
                          select new CarModel
                          {
-                             Id=a_car.Id,
-                             Tahun=a_car.Tahun,
-                             Transmisi=a_car.Transmisi,
-                             BBM=a_car.BBM,
-                             NoPolisi=a_car.NoPolisi,
-                             MasaBerlaku=a_car.MasaBerlaku,
-                             Harga=a_car.Harga,
-                             MerkName=a_merk.NamaMobil
+                             Id = a_car.Id,
+                             Tahun = a_car.Tahun,
+                             Transmisi = a_car.Transmisi,
+                             BBM = a_car.BBM,
+                             NoPolisi = a_car.NoPolisi,
+                             MasaBerlaku = a_car.MasaBerlaku,
+                             Harga = a_car.Harga,
+                             MerkName = a_merk.NamaMobil,
+                             MerkImage = a_merk.Images
                          };
             carList = queres.ToList();
             return View(carList);
@@ -48,8 +48,17 @@ namespace Auction2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(CarModel carModel)
+        public ActionResult Create(CarModel carModel, HttpPostedFileBase file)
         {
+            string imageUrl = "";
+            if (file != null)
+            {
+                string imageName = System.IO.Path.GetFileName(file.FileName);
+                string physicalPath = Server.MapPath("~/images/" + imageName);
+                file.SaveAs(physicalPath);
+                imageUrl = imageName;
+            }
+
             try
             {
                 Mobil car = new Mobil()
@@ -178,6 +187,7 @@ namespace Auction2.Controllers
                 var winner = (from a_bid in context.BidUsers
                               join a_merk in context.Mereks
                               on a_bid.MerkId equals id
+                              where a_bid.TanggalBid <= a_bid.BatasBid
                               select new BidUserModel
                               {
                                   Id = a_bid.Id,
@@ -209,11 +219,9 @@ namespace Auction2.Controllers
                 TanggalBid = m.TanggalBid,
                 BatasBid = m.BatasBid,
                 Harga = m.Harga,
-                MerkId = m.MerkId,
+                MerkId = m.MerkId
             }).SingleOrDefault();
-
-            Session["MerkName"] = bid.MerkName.ToString();
-            PopulateDropDownBid(bid);
+            //PopulateDropDownBid(bid);
             return View(bid);
         }
 
@@ -231,11 +239,11 @@ namespace Auction2.Controllers
                     TanggalBid = bidusermodel.TanggalBid,
                     BatasBid = bidusermodel.BatasBid,
                     Harga = bidusermodel.Harga,
-                    MerkId = bidusermodel.MerkId,
+                    //MerkId = bidusermodel.MerkId
                 };
                 context.BidUsers.InsertOnSubmit(biduser);
                 context.SubmitChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Car");
             }
             catch
             {

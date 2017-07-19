@@ -4,53 +4,77 @@
     ViewBag.Title = "Index";
 }
 
-<div>
-    <br />
-    @if (Session["Nama"] != null)
-    {
-        <text>
-            Welcome :  @Session["Nama"].ToString()
-        </text>
-    }
+<br />
+<div class="alert alert-success">
+    <h3>
+        <span>
+            @if (Session["Nama"] != null)
+            {
+                <text>
+                    Welcome :  @Session["Nama"].ToString()
+                </text>
+            }
+        </span>
+    </h3>
 </div>
 
-<h2>Daftar Lelang Mobil  </h2>
-<table class="table">
-    <thead class="thead-inverse">
-        <tr>
-            <th>@Html.DisplayNameFor(modelItem => modelItem.Id)</th>
-            <th>@Html.DisplayNameFor(modelItem => modelItem.MerkName)</th>
-            <th>@Html.DisplayNameFor(modelItem => modelItem.MasaBerlaku)</th>
-            <th>@Html.DisplayNameFor(modelItem => modelItem.Tahun)</th>
-            <th>@Html.DisplayNameFor(modelItem => modelItem.NoPolisi)</th>
-            <th>@Html.DisplayNameFor(modelItem => modelItem.Harga)</th>
-            <th>Keterangan</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                <td>@Html.DisplayFor(modelItem => item.MerkName)</td>
-                <td>
-                    @*@Html.DisplayFor(modelItem => item.MasaBerlaku)*@
+
+<div class="row list-group-item">
+@foreach (var item in Model)
+{
+    <div class="col-md-6 col-lg-4 col-sm-6 mr-auto">
+        <div class="card" style="width: 30rem;">
+            <img class="img-rounded mx-auto card-img-top" alt="Card image cap" 
+                 src="~/images/@item.MerkImage" height="150"/>
+            <div class="card-block">
+                <h4 class="card-title"><span> 
+                    <strong>@Html.DisplayFor(modelItem => item.Id) . @Html.DisplayNameFor(modelItem => modelItem.MerkName): </strong>
+                    @Html.DisplayFor(modelItem => item.MerkName)
+                </span></h4>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <strong>@Html.DisplayNameFor(modelItem => modelItem.MasaBerlaku) : </strong>
                     <span class="hidden-xs">@item.MasaBerlaku.ToString("dd/MM/yyyy")</span>
                     <span class="hidden-sm hidden-md hidden-lg">@item.MasaBerlaku.ToString("dd/MM/yyyy")</span>
-                </td>
-                <td>@Html.DisplayFor(modelItem => item.Tahun)</td>
-                <td>@Html.DisplayFor(modelItem => item.NoPolisi)</td>
-                <td>Rp @Html.DisplayFor(modelItem => item.Harga)</td>
-                <td>
-                    @Html.ActionLink("Add Bid", "AddBid", new { id = item.Id}) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                    <strong>@Html.DisplayNameFor(modelItem => modelItem.Tahun) :</strong>
+                    @Html.DisplayFor(modelItem => item.Tahun)
+                    <br />
+                    <strong>@Html.DisplayNameFor(modelItem => modelItem.NoPolisi) :</strong>
+                    @Html.DisplayFor(modelItem => item.NoPolisi)
+                    <br />
+                    <strong>@Html.DisplayNameFor(modelItem => modelItem.Harga) :</strong>
+                    Rp @Html.DisplayFor(modelItem => item.Harga)
+                </li>
+                @*<li class="list-group-item">
+                    <strong>@Html.DisplayNameFor(modelItem => modelItem.Tahun) :</strong>
+                    @Html.DisplayFor(modelItem => item.Tahun)
+                    <br />
+                    <strong>@Html.DisplayNameFor(modelItem => modelItem.NoPolisi) :</strong>
+                    @Html.DisplayFor(modelItem => item.NoPolisi)
+                </li>*@
+                @*<li class="list-group-item">
+                    <strong>@Html.DisplayNameFor(modelItem => modelItem.NoPolisi) :</strong>
+                    @Html.DisplayFor(modelItem => item.NoPolisi)
+                </li>*@
+                @*<li class="list-group-item">
+                    <strong>@Html.DisplayNameFor(modelItem => modelItem.Harga) :</strong>
+                    Rp @Html.DisplayFor(modelItem => item.Harga)
+                </li>*@
+                <li class="list-group-item ">
+                    <center>
+                        @Html.ActionLink("Add Bid", "AddBid", new { id = item.Id }, new { @class = "btn btn-warning btn-sm margin-right" })
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-default btn-sm margin-right" })
+                    </center>
+                </li>
+            </ul>
+        </div>
+    </div>
+}
+</div>
 
-@Html.ActionLink("Create New Item Lelang", "Create")
-@*@Html.ActionLink("About", "About", "Home")*@
+<div class="form-group">
+    <div class="col-md-10">
+        @Html.ActionLink("Create New Item Lelang", "Create", null, new { @class = "btn btn-info btn-md" })
+    </div>
+</div>

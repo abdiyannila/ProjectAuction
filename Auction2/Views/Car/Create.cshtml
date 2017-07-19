@@ -5,39 +5,57 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+@*<h2>Create</h2>*@
 @using (Html.BeginForm())
 {
-        @Html.DisplayNameFor(m => m.MerkName)
-        <div>
-           @Html.DropDownListFor(m => Model.MerkId, Model.Merks)
+    <div class="form-group">
+        @Html.LabelFor(m => m.MerkName, new { @class = "col-md-2 control-label" })
+        @*@Html.DropDownListFor(m => Model.MerkId, Model.Merks, new { @class = "form-control" })*@
+        @Html.DropDownListFor(m => Model.MerkId, Model.Merks, new { @class = "form-control btn btn-info btn-sm drodown-toggle" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Tahun, new { @class = "col-md-2 control-label" })
+        @Html.TextBoxFor(m => m.Tahun, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Transmisi, new { @class = "col-md-2 control-label" })
+        @Html.TextBoxFor(m => m.Transmisi, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.BBM, new { @class = "col-md-2 control-label" })
+        @Html.TextBoxFor(m => m.BBM, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.NoPolisi, new { @class = "col-md-2 control-label" })
+        @Html.TextBoxFor(m => m.NoPolisi, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.MasaBerlaku, new { @class = "col-md-2 control-label" })
+        @Html.TextBoxFor(m => m.MasaBerlaku, "{0:d}", new { @class = "form-control datepicker" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Harga, new { @class = "col-md-2 control-label" })
+        @Html.TextBoxFor(m => m.Harga, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Upload Image", htmlAttributes: new { @class = "col-md-2 control-label" }) <input type="file" name="file" id="file" style="width:100%;" />
+    </div>
+
+    <br />
+    <div class="form-group">
+        <div class="col-md-10">
+            @*<input type="submit" value="Create" class="btn btn-success btn-md margin-right"/>*@
+            <button type="submit" class="btn btn-success btn-md margin-right " value="Create">
+                <span class="glyphicon glyphicon-save"></span> Create
+            </button>
         </div>
-        @Html.DisplayNameFor(m => m.Tahun)
-        <div>
-            @Html.TextBoxFor(m => m.Tahun)
-        </div>
-        @Html.DisplayNameFor(m => m.Transmisi)
-        <div>
-            @Html.TextBoxFor(m => m.Transmisi)
-        </div>
-        @Html.DisplayNameFor(m => m.BBM)
-        <div>
-            @Html.TextBoxFor(m => m.BBM)
-        </div>
-        @Html.DisplayNameFor(m => m.NoPolisi)
-        <div>
-            @Html.TextBoxFor(m => m.NoPolisi)
-        </div>
-        @Html.DisplayNameFor(m => m.MasaBerlaku)
-        <div>
-            @Html.TextBoxFor(m => m.MasaBerlaku,"{0:d}", new {@class = "form-control datepicker"})
-        </div>
-        @Html.DisplayNameFor(m => m.Harga)
-        <div>
-            @Html.TextBoxFor(m => m.Harga)
-        </div>
-        <div>
-            <br />
-            <input type="submit" value="Create" />
-        </div>
+    </div>
+    <br />
 }

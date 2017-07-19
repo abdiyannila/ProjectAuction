@@ -24,6 +24,9 @@ namespace Auction2.Models
         [DisplayName("Merk Mobil")]
         public string MerkName { get; set; }
 
+        [DisplayName("Merk Mobil")]
+        public string MerkImage { get; set; }
+
         //nambahin dropdown merk mobil
         public IEnumerable<SelectListItem> Merks { get; set; }
 

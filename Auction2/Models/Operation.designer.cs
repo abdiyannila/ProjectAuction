@@ -39,12 +39,12 @@ namespace Auction2.Models
     partial void InsertLoginUser(LoginUser instance);
     partial void UpdateLoginUser(LoginUser instance);
     partial void DeleteLoginUser(LoginUser instance);
-    partial void InsertMerek(Merek instance);
-    partial void UpdateMerek(Merek instance);
-    partial void DeleteMerek(Merek instance);
     partial void InsertListBidUser(ListBidUser instance);
     partial void UpdateListBidUser(ListBidUser instance);
     partial void DeleteListBidUser(ListBidUser instance);
+    partial void InsertMerek(Merek instance);
+    partial void UpdateMerek(Merek instance);
+    partial void DeleteMerek(Merek instance);
     #endregion
 		
 		public OperationDataContext() : 
@@ -101,19 +101,19 @@ namespace Auction2.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<Merek> Mereks
-		{
-			get
-			{
-				return this.GetTable<Merek>();
-			}
-		}
-		
 		public System.Data.Linq.Table<ListBidUser> ListBidUsers
 		{
 			get
 			{
 				return this.GetTable<ListBidUser>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Merek> Mereks
+		{
+			get
+			{
+				return this.GetTable<Merek>();
 			}
 		}
 	}
@@ -890,176 +890,6 @@ namespace Auction2.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Merek")]
-	public partial class Merek : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _NamaMobil;
-		
-		private EntitySet<BidUser> _BidUsers;
-		
-		private EntitySet<Mobil> _Mobils;
-		
-		private EntitySet<ListBidUser> _ListBidUsers;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnNamaMobilChanging(string value);
-    partial void OnNamaMobilChanged();
-    #endregion
-		
-		public Merek()
-		{
-			this._BidUsers = new EntitySet<BidUser>(new Action<BidUser>(this.attach_BidUsers), new Action<BidUser>(this.detach_BidUsers));
-			this._Mobils = new EntitySet<Mobil>(new Action<Mobil>(this.attach_Mobils), new Action<Mobil>(this.detach_Mobils));
-			this._ListBidUsers = new EntitySet<ListBidUser>(new Action<ListBidUser>(this.attach_ListBidUsers), new Action<ListBidUser>(this.detach_ListBidUsers));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NamaMobil", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string NamaMobil
-		{
-			get
-			{
-				return this._NamaMobil;
-			}
-			set
-			{
-				if ((this._NamaMobil != value))
-				{
-					this.OnNamaMobilChanging(value);
-					this.SendPropertyChanging();
-					this._NamaMobil = value;
-					this.SendPropertyChanged("NamaMobil");
-					this.OnNamaMobilChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Merek_BidUser", Storage="_BidUsers", ThisKey="Id", OtherKey="MerkId")]
-		public EntitySet<BidUser> BidUsers
-		{
-			get
-			{
-				return this._BidUsers;
-			}
-			set
-			{
-				this._BidUsers.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Merek_Mobil", Storage="_Mobils", ThisKey="Id", OtherKey="MerkId")]
-		public EntitySet<Mobil> Mobils
-		{
-			get
-			{
-				return this._Mobils;
-			}
-			set
-			{
-				this._Mobils.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Merek_ListBidUser", Storage="_ListBidUsers", ThisKey="Id", OtherKey="MerkId")]
-		public EntitySet<ListBidUser> ListBidUsers
-		{
-			get
-			{
-				return this._ListBidUsers;
-			}
-			set
-			{
-				this._ListBidUsers.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_BidUsers(BidUser entity)
-		{
-			this.SendPropertyChanging();
-			entity.Merek = this;
-		}
-		
-		private void detach_BidUsers(BidUser entity)
-		{
-			this.SendPropertyChanging();
-			entity.Merek = null;
-		}
-		
-		private void attach_Mobils(Mobil entity)
-		{
-			this.SendPropertyChanging();
-			entity.Merek = this;
-		}
-		
-		private void detach_Mobils(Mobil entity)
-		{
-			this.SendPropertyChanging();
-			entity.Merek = null;
-		}
-		
-		private void attach_ListBidUsers(ListBidUser entity)
-		{
-			this.SendPropertyChanging();
-			entity.Merek = this;
-		}
-		
-		private void detach_ListBidUsers(ListBidUser entity)
-		{
-			this.SendPropertyChanging();
-			entity.Merek = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ListBidUser")]
 	public partial class ListBidUser : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1352,6 +1182,200 @@ namespace Auction2.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Merek")]
+	public partial class Merek : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _NamaMobil;
+		
+		private string _Images;
+		
+		private EntitySet<BidUser> _BidUsers;
+		
+		private EntitySet<Mobil> _Mobils;
+		
+		private EntitySet<ListBidUser> _ListBidUsers;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNamaMobilChanging(string value);
+    partial void OnNamaMobilChanged();
+    partial void OnImagesChanging(string value);
+    partial void OnImagesChanged();
+    #endregion
+		
+		public Merek()
+		{
+			this._BidUsers = new EntitySet<BidUser>(new Action<BidUser>(this.attach_BidUsers), new Action<BidUser>(this.detach_BidUsers));
+			this._Mobils = new EntitySet<Mobil>(new Action<Mobil>(this.attach_Mobils), new Action<Mobil>(this.detach_Mobils));
+			this._ListBidUsers = new EntitySet<ListBidUser>(new Action<ListBidUser>(this.attach_ListBidUsers), new Action<ListBidUser>(this.detach_ListBidUsers));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NamaMobil", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string NamaMobil
+		{
+			get
+			{
+				return this._NamaMobil;
+			}
+			set
+			{
+				if ((this._NamaMobil != value))
+				{
+					this.OnNamaMobilChanging(value);
+					this.SendPropertyChanging();
+					this._NamaMobil = value;
+					this.SendPropertyChanged("NamaMobil");
+					this.OnNamaMobilChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Images", DbType="NVarChar(50)")]
+		public string Images
+		{
+			get
+			{
+				return this._Images;
+			}
+			set
+			{
+				if ((this._Images != value))
+				{
+					this.OnImagesChanging(value);
+					this.SendPropertyChanging();
+					this._Images = value;
+					this.SendPropertyChanged("Images");
+					this.OnImagesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Merek_BidUser", Storage="_BidUsers", ThisKey="Id", OtherKey="MerkId")]
+		public EntitySet<BidUser> BidUsers
+		{
+			get
+			{
+				return this._BidUsers;
+			}
+			set
+			{
+				this._BidUsers.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Merek_Mobil", Storage="_Mobils", ThisKey="Id", OtherKey="MerkId")]
+		public EntitySet<Mobil> Mobils
+		{
+			get
+			{
+				return this._Mobils;
+			}
+			set
+			{
+				this._Mobils.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Merek_ListBidUser", Storage="_ListBidUsers", ThisKey="Id", OtherKey="MerkId")]
+		public EntitySet<ListBidUser> ListBidUsers
+		{
+			get
+			{
+				return this._ListBidUsers;
+			}
+			set
+			{
+				this._ListBidUsers.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_BidUsers(BidUser entity)
+		{
+			this.SendPropertyChanging();
+			entity.Merek = this;
+		}
+		
+		private void detach_BidUsers(BidUser entity)
+		{
+			this.SendPropertyChanging();
+			entity.Merek = null;
+		}
+		
+		private void attach_Mobils(Mobil entity)
+		{
+			this.SendPropertyChanging();
+			entity.Merek = this;
+		}
+		
+		private void detach_Mobils(Mobil entity)
+		{
+			this.SendPropertyChanging();
+			entity.Merek = null;
+		}
+		
+		private void attach_ListBidUsers(ListBidUser entity)
+		{
+			this.SendPropertyChanging();
+			entity.Merek = this;
+		}
+		
+		private void detach_ListBidUsers(ListBidUser entity)
+		{
+			this.SendPropertyChanging();
+			entity.Merek = null;
 		}
 	}
 }
